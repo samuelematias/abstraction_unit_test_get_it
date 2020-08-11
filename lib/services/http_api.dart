@@ -1,15 +1,16 @@
+import 'package:abstraction_unit_test_get_it/services/api/api.dart';
 import 'package:http/http.dart' as http;
 
-class Api {
+class HttpApi implements Api {
   static const endpoint = 'https://myapi.com';
 
   var client = new http.Client();
 
+  @override
   Future<bool> likePost(int postId) async {
-    var response =
-        await client.post('$endpoint/likePost/$postId');
+    var response = await client.post('$endpoint/likePost/$postId');
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return true;
     }
 
